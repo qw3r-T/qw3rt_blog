@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title> - linux</title>
+    <link href="https://qw3r-t.github.io/qw3rt_blog/tags/linux/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://qw3r-t.github.io/qw3rt_blog/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-11-14T00:00:00+00:00</updated>
+    <id>https://qw3r-t.github.io/qw3rt_blog/tags/linux/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Linux Permissions</title>
+        <published>2023-11-14T00:00:00+00:00</published>
+        <updated>2023-11-14T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://qw3r-t.github.io/qw3rt_blog/blog/linux-permissions/" type="text/html"/>
+        <id>https://qw3r-t.github.io/qw3rt_blog/blog/linux-permissions/</id>
+        
+        <content type="html">&lt;p&gt;One of the key features that makes Linux so powerful is its robust permission system, which enables users to control who can access files, directories, and other resources on their systems. In this post, we&#x27;ll dive into the basics of Linux permissions.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;permission-groups&quot;&gt;Permission Groups&lt;&#x2F;h2&gt;
+&lt;p&gt;In Linux each file, folder or symlink has three permission groups.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;The owner of the file (u)&lt;&#x2F;li&gt;
+&lt;li&gt;The group of the file (g)&lt;&#x2F;li&gt;
+&lt;li&gt;Others (o)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Typically if your logged in as user1 you will create files owned by the user user1 and by the group user1.&lt;&#x2F;p&gt;
+&lt;p&gt;To change the owner of a file you have to use the command &lt;code&gt;chown&lt;&#x2F;code&gt; the syntax is:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chown owner:group file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For example if you want to change the owner of myfile user to user2 and to the wheel group enter:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chown user2:wheel myfile
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;permission-types&quot;&gt;Permission Types&lt;&#x2F;h2&gt;
+&lt;p&gt;Each file has three permission types that can be assigned to each permission group.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;read (r) &lt;&#x2F;li&gt;
+&lt;li&gt;write (w)&lt;&#x2F;li&gt;
+&lt;li&gt;execute (e)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;list-the-permissions&quot;&gt;List the Permissions&lt;&#x2F;h3&gt;
+&lt;p&gt;To list the permissions use the &lt;code&gt;ls&lt;&#x2F;code&gt; command with the &lt;code&gt;-l&lt;&#x2F;code&gt; option.&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  ls -l
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;An example output would be.&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  _rwxrwxr-- 1 user1 group1 149 Oct 27 20:22 myfile
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Let&#x27;s look at where we can find what.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;The first character (&lt;code&gt;_&lt;&#x2F;code&gt;) is a special permission flag that can vary&lt;&#x2F;li&gt;
+&lt;li&gt;The next three characters (&lt;code&gt;rwx&lt;&#x2F;code&gt;) are the permissions for the owner of the file. In this case he can read, modify and execute the file.&lt;&#x2F;li&gt;
+&lt;li&gt;The next three characters (&lt;code&gt;rwx&lt;&#x2F;code&gt;) are for the group of the file. In this case the group has the same permissions as the user.&lt;&#x2F;li&gt;
+&lt;li&gt;The next three characters (&lt;code&gt;r--&lt;&#x2F;code&gt;) are the permissions for all other users on the system. In this case they can only look at the file.&lt;&#x2F;li&gt;
+&lt;li&gt;The integer after the long set of character (&lt;code&gt;1&lt;&#x2F;code&gt;) displays the number of hard links to a file.&lt;&#x2F;li&gt;
+&lt;li&gt;The next to words (&lt;code&gt;user1 group1&lt;&#x2F;code&gt;) refers to the owner and to the group of the file. In this case the owner would be user1 and the group group1.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;change-permissions&quot;&gt;Change Permissions&lt;&#x2F;h3&gt;
+&lt;p&gt;To change permission the &lt;code&gt;chmod&lt;&#x2F;code&gt; command is used.&lt;&#x2F;p&gt;
+&lt;p&gt;The short form of the permission groups are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;u&lt;&#x2F;code&gt; for the owner&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;g&lt;&#x2F;code&gt; for the group&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;o&lt;&#x2F;code&gt; for other users&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;a&lt;&#x2F;code&gt; for all three permission groups&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;To change the permissions of a file run chmod followed by the permission group you wanna change, an assignment operator (+ or -), a permission and the name of the file. For example:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chmod u+x file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This would allow the owner of file to execute it.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;binary-references&quot;&gt;Binary References&lt;&#x2F;h4&gt;
+&lt;p&gt;The method explained above can be laborious. The binary reference method is easier sometimes.&lt;&#x2F;p&gt;
+&lt;p&gt;To use the binary reference method you need to calculate the permission of every permission group. I know it sounds tedious but it&#x27;s not.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;r = 4&lt;&#x2F;li&gt;
+&lt;li&gt;w = 2&lt;&#x2F;li&gt;
+&lt;li&gt;x =1
+To calculate the permission of a permission group simply add the permission values. For example r-x would have the value 5, r being 4 and x being 1.
+For defining the value of the entire permission group simply append all permission values of every group. For example &lt;code&gt;_rwx--xr--&lt;&#x2F;code&gt; would become &lt;code&gt;714&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Using &lt;code&gt;chmod&lt;&#x2F;code&gt; to assign permissions is relatively easy. Enter &lt;code&gt;chmod&lt;&#x2F;code&gt;, append the number you obtained from the above explanation and the name of the file. For example:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chmod 714 file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This would set &lt;code&gt;rwx--xr--&lt;&#x2F;code&gt; as permissions for file.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;special-permissions&quot;&gt;Special Permissions&lt;&#x2F;h2&gt;
+&lt;p&gt;In the part about listing permissions we quickly discussed the that there was a flag for special permissions in the beginning of the character string when we run &lt;code&gt;ls -l&lt;&#x2F;code&gt;. We will list some special permissions here.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the first character is &lt;code&gt;-&lt;&#x2F;code&gt; or &lt;code&gt;_&lt;&#x2F;code&gt; no special permission is set.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;d&lt;&#x2F;code&gt; stands for a directory&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;l&lt;&#x2F;code&gt; means that the file or directory is a symbolic link.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;s&lt;&#x2F;code&gt; indicates the setuid or setgid permission. However the &lt;code&gt;s&lt;&#x2F;code&gt; is not displayed in the special permission part, but it&#x27;s represented as an s in the read portion of the group or user.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;t&lt;&#x2F;code&gt; indicates the sticky bit permission. The &lt;code&gt;t&lt;&#x2F;code&gt; is not displayed in the special permission part. It&#x27;s instead represented as a &lt;code&gt;t&lt;&#x2F;code&gt; in the executable portion of all permission groups.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;setuid-setgid&quot;&gt;Setuid&#x2F;Setgid&lt;&#x2F;h3&gt;
+&lt;p&gt;The setuid&#x2F;setgid permissions are used to tell the system to run an executable as the owner (setuid) or the group (setgid) of the file.
+This can be dangerous and make your system vulnerable. Be careful with it!&lt;&#x2F;p&gt;
+&lt;p&gt;To setup setuid&#x2F;setgid we will use the &lt;code&gt;chmod&lt;&#x2F;code&gt; command.
+To setup setuid for a file run:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chmod g+s file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To setup setgid for a file run:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chmod u+s file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Notice the &lt;strong&gt;g&lt;&#x2F;strong&gt; standing for &lt;strong&gt;user&lt;&#x2F;strong&gt; and the &lt;strong&gt;g&lt;&#x2F;strong&gt; standing for &lt;strong&gt;group&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;sticky-bit&quot;&gt;Sticky Bit&lt;&#x2F;h3&gt;
+&lt;p&gt;The sticky bit permission can be very useful especially in a shared environment. When a directory has the sticky bit permission, then the files contained in it can be only be deleted and renamed by the owner of the file.
+To setup the sticky bit permission we will use the &lt;code&gt;chmod&lt;&#x2F;code&gt; command.
+To add the sticky bit permission to dir run:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;  chmod +t dir
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

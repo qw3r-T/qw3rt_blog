@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Permissions | </title>
+  <meta name="title" content="Linux Permissions">
+<meta name="description" content="" />
+
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <style>  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  input {
+    font-size: 1rem;
+  }
+
+  main,article {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 0.875rem;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+  /* blog posts */
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+</style>
+  </head>
+<body>
+  <header>
+  <a href="https:&#x2F;&#x2F;qw3r-t.github.io&#x2F;qw3rt_blog&#x2F;" class="title">
+    <h2></h2>
+  </a>
+  <nav>
+    <a href="https:&#x2F;&#x2F;qw3r-t.github.io&#x2F;qw3rt_blog&#x2F;">Home</a>
+      <a href="https://qw3r-t.github.io/qw3rt_blog/blog/">Blog</a>
+  </nav>
+</header>
+
+    <h1>Linux Permissions</h1>
+      <p>
+        <i>
+          <time datetime='2023-11-14T00:00:00+00:00' pubdate>14 Nov, 2023</time>
+        </i>
+      </p>
+  <main>
+    <p>One of the key features that makes Linux so powerful is its robust permission system, which enables users to control who can access files, directories, and other resources on their systems. In this post, we'll dive into the basics of Linux permissions.</p>
+<h2 id="permission-groups">Permission Groups</h2>
+<p>In Linux each file, folder or symlink has three permission groups.</p>
+<ol>
+<li>The owner of the file (u)</li>
+<li>The group of the file (g)</li>
+<li>Others (o)</li>
+</ol>
+<p>Typically if your logged in as user1 you will create files owned by the user user1 and by the group user1.</p>
+<p>To change the owner of a file you have to use the command <code>chown</code> the syntax is:</p>
+<pre><code>  chown owner:group file
+</code></pre>
+<p>For example if you want to change the owner of myfile user to user2 and to the wheel group enter:</p>
+<pre><code>  chown user2:wheel myfile
+</code></pre>
+<h2 id="permission-types">Permission Types</h2>
+<p>Each file has three permission types that can be assigned to each permission group.</p>
+<ol>
+<li>read (r) </li>
+<li>write (w)</li>
+<li>execute (e)</li>
+</ol>
+<h3 id="list-the-permissions">List the Permissions</h3>
+<p>To list the permissions use the <code>ls</code> command with the <code>-l</code> option.</p>
+<pre><code>  ls -l
+</code></pre>
+<p>An example output would be.</p>
+<pre><code>  _rwxrwxr-- 1 user1 group1 149 Oct 27 20:22 myfile
+</code></pre>
+<p>Let's look at where we can find what.</p>
+<ol>
+<li>The first character (<code>_</code>) is a special permission flag that can vary</li>
+<li>The next three characters (<code>rwx</code>) are the permissions for the owner of the file. In this case he can read, modify and execute the file.</li>
+<li>The next three characters (<code>rwx</code>) are for the group of the file. In this case the group has the same permissions as the user.</li>
+<li>The next three characters (<code>r--</code>) are the permissions for all other users on the system. In this case they can only look at the file.</li>
+<li>The integer after the long set of character (<code>1</code>) displays the number of hard links to a file.</li>
+<li>The next to words (<code>user1 group1</code>) refers to the owner and to the group of the file. In this case the owner would be user1 and the group group1.</li>
+</ol>
+<h3 id="change-permissions">Change Permissions</h3>
+<p>To change permission the <code>chmod</code> command is used.</p>
+<p>The short form of the permission groups are:</p>
+<ul>
+<li><code>u</code> for the owner</li>
+<li><code>g</code> for the group</li>
+<li><code>o</code> for other users</li>
+<li><code>a</code> for all three permission groups</li>
+</ul>
+<p>To change the permissions of a file run chmod followed by the permission group you wanna change, an assignment operator (+ or -), a permission and the name of the file. For example:</p>
+<pre><code>  chmod u+x file
+</code></pre>
+<p>This would allow the owner of file to execute it.</p>
+<h4 id="binary-references">Binary References</h4>
+<p>The method explained above can be laborious. The binary reference method is easier sometimes.</p>
+<p>To use the binary reference method you need to calculate the permission of every permission group. I know it sounds tedious but it's not.</p>
+<ul>
+<li>r = 4</li>
+<li>w = 2</li>
+<li>x =1
+To calculate the permission of a permission group simply add the permission values. For example r-x would have the value 5, r being 4 and x being 1.
+For defining the value of the entire permission group simply append all permission values of every group. For example <code>_rwx--xr--</code> would become <code>714</code>.</li>
+</ul>
+<p>Using <code>chmod</code> to assign permissions is relatively easy. Enter <code>chmod</code>, append the number you obtained from the above explanation and the name of the file. For example:</p>
+<pre><code>  chmod 714 file
+</code></pre>
+<p>This would set <code>rwx--xr--</code> as permissions for file.</p>
+<h2 id="special-permissions">Special Permissions</h2>
+<p>In the part about listing permissions we quickly discussed the that there was a flag for special permissions in the beginning of the character string when we run <code>ls -l</code>. We will list some special permissions here.</p>
+<ol>
+<li>If the first character is <code>-</code> or <code>_</code> no special permission is set.</li>
+<li><code>d</code> stands for a directory</li>
+<li><code>l</code> means that the file or directory is a symbolic link.</li>
+<li><code>s</code> indicates the setuid or setgid permission. However the <code>s</code> is not displayed in the special permission part, but it's represented as an s in the read portion of the group or user.</li>
+<li><code>t</code> indicates the sticky bit permission. The <code>t</code> is not displayed in the special permission part. It's instead represented as a <code>t</code> in the executable portion of all permission groups.</li>
+</ol>
+<h3 id="setuid-setgid">Setuid/Setgid</h3>
+<p>The setuid/setgid permissions are used to tell the system to run an executable as the owner (setuid) or the group (setgid) of the file.
+This can be dangerous and make your system vulnerable. Be careful with it!</p>
+<p>To setup setuid/setgid we will use the <code>chmod</code> command.
+To setup setuid for a file run:</p>
+<pre><code>  chmod g+s file
+</code></pre>
+<p>To setup setgid for a file run:</p>
+<pre><code>  chmod u+s file
+</code></pre>
+<p>Notice the <strong>g</strong> standing for <strong>user</strong> and the <strong>g</strong> standing for <strong>group</strong>.</p>
+<h3 id="sticky-bit">Sticky Bit</h3>
+<p>The sticky bit permission can be very useful especially in a shared environment. When a directory has the sticky bit permission, then the files contained in it can be only be deleted and renamed by the owner of the file.
+To setup the sticky bit permission we will use the <code>chmod</code> command.
+To add the sticky bit permission to dir run:</p>
+<pre><code>  chmod +t dir
+</code></pre>
+
+  </main>
+  <p>
+        Tags:
+          <a href="https://qw3r-t.github.io/qw3rt_blog/tags/linux/">#linux</a>
+  </p>
+<footer>
+    Made with <a href="https://codeberg.org/alanpearce/zola-bearblog">Zola ʕ•ᴥ•ʔ Bear</a>
+</footer>
+</body>
+</html>

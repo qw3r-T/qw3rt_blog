@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://qw3r-t.github.io/qw3rt_blog/</loc>
+    </url>
+    <url>
+        <loc>https://qw3r-t.github.io/qw3rt_blog/blog/</loc>
+    </url>
+    <url>
+        <loc>https://qw3r-t.github.io/qw3rt_blog/blog/linux-permissions/</loc>
+        <lastmod>2023-11-14</lastmod>
+    </url>
+    <url>
+        <loc>https://qw3r-t.github.io/qw3rt_blog/tags/</loc>
+    </url>
+    <url>
+        <loc>https://qw3r-t.github.io/qw3rt_blog/tags/linux/</loc>
+    </url>
+</urlset>

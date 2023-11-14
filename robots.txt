@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://qw3r-t.github.io/qw3rt_blog/sitemap.xml
