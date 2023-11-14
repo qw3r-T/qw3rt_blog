@@ -1,5 +1,5 @@
 {
-  description = "Minimal Rust development environment";
+  description = "Flake containing Zola";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
