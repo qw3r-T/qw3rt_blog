@@ -1,0 +1,3 @@
+[submodule "blog/themes/zola-bearblog"]
+	path = blog/themes/zola-bearblog
+	url = https://codeberg.org/alanpearce/zola-bearblog
